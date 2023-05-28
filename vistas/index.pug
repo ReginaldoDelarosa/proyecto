@@ -1,0 +1,154 @@
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Attire Home
+  // fontawesome cdn
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' integrity='sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  // bootstrap css
+  link(rel='stylesheet' href='bootstrap-5.0.2-dist/css/bootstrap.min.css')
+  // custom css
+  link(rel='stylesheet' href='css/main.css')
+// navbar
+nav.navbar.navbar-expand-lg.navbar-light.bg-white.py-4.fixed
+  .container
+    a.navbar-brand.d-flex.justify-content-between.align-items-center.order-lg-0(href='/')
+      img(src='https://th.bing.com/th/id/OIP.Mh1RFleyFGYE5Y_BL6FalwAAAA?pid=ImgDet&rs=1' alt='site icon')
+      span.text-uppercase.fw-lighter.ms-2 UniConnect
+    #navMenu.nav-btns.order-lg-1
+      ul.container-fluid.justify-content-
+        form(action="/importar", method="post", enctype="multipart/form-data")
+          input.form-control.me-2(type="file", name="archivoCSV")
+          input.btn.btn-outline-success(type="submit", value="Importar")
+        button.btn.btn-outline-success(type='button', id='exportarBtn', value="exportar")
+           a.nav-link.text-uppercase.text-dark(href='/exportar') Exportar
+      
+    .order-lg-2.nav-btns
+      
+        input.form-control.me-2(type='search' id='searchInput' placeholder='Search' aria-label='Search')
+        button.btn.btn-outline-success(type='submit' onclick='filtrarDatos()') Search
+// end of navbar
+// form
+br
+br
+.container-sm
+  h2.position-relative.d-inline-block Ingrese los datos
+  
+    .mb-3
+      label.form-label(for='nombre') Nombre
+      input#nombre.form-control(type='text' aria-describedby='nombre')
+    .mb-3
+      label.form-label(for='apellido') Apellido
+      input#apellido.form-control(type='text' aria-describedby='apellido' )
+    .mb-3
+      label.form-label(for='identificacion') Identificacion
+      input#identificacion.form-control(type='number' aria-describedby='identificacion' )
+    .mb-3
+      label.form-label(for='pruebas') Puntaje Pruebas ICFES
+      input#pruebas.form-control(type='number' aria-describedby='pruebas' )
+    .mb-3
+      label.form-label(for='estrato') Estrato
+      input#estrato.form-control(type='number' aria-describedby='estrato' )
+    .mb-3
+      label.form-label(for='colegio') Colegio
+      input#colegios.form-control(type='text' aria-describedby='colegios' )
+    .mb-3
+      label.form-label(for='localidad') Localidad
+      input#localidad.form-control(type='text' aria-describedby='localidad')
+    .mb-3
+      label.form-label(for='email') Email
+      input#email.form-control(type='email' aria-describedby='email' )
+   
+    button.btn.btn-primary(type='submit' id='agregar') Submit
+    button.btn.btn-primary(type='submit' id='listar') Listar
+// end of form
+// Table
+.container-sm
+  table.table.table-success.table-striped(id='tabla-info')
+    thead
+      tr
+        th(scope='col') Nombre
+        th(scope='col') Apellido
+        th(scope='col') Identificacion
+        th(scope='col') Prueba ICFES
+        th(scope='col') Estrato
+        th(scope='col') Colegio
+        th(scope='col') Localidad
+        th(scope='col') Email
+        th(scope='col') Borrar
+        th(scope='col') Editar
+    tbody
+      tr
+        td Juan
+        td Martinez
+        td 10017812354
+        td 390
+        td 6
+        td La escuela
+        td Barranquilla
+        td juanmartinez@gmail.com
+// end of Table
+// footer
+footer.bg-dark.py-5
+  .container
+    .row.text-white.g-4
+      .col-md-6.col-lg-3
+        a.text-uppercase.text-decoration-none.brand.text-white(href='index.html') &iquest;Quienes somos?
+        p.text-white.text-muted.mt-3
+          | Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum mollitia quisquam veniam odit cupiditate, ullam aut voluptas velit dolor ipsam?
+      .col-md-6.col-lg-3
+        h5.fw-light Links
+        ul.list-unstyled
+          li.my-3
+            a.text-white.text-decoration-none.text-muted(href='https://www.facebook.com/#')
+              i.fas.fa-chevron-right.me-1
+              | Facebook
+          li.my-3
+            a.text-white.text-decoration-none.text-muted(href='https://www.instagram.com/')
+              i.fas.fa-chevron-right.me-1
+              |  Instagram
+          li.my-3
+            a.text-white.text-decoration-none.text-muted(href='https://twitter.com/')
+              i.fas.fa-chevron-right.me-1
+              |  Twitter
+          li.my-3
+            a.text-white.text-decoration-none.text-muted(href='https://www.reddit.com/')
+              i.fas.fa-chevron-right.me-1
+              |  Reddit
+      .col-md-6.col-lg-3
+        h5.fw-light.mb-3 Contactanos
+        .d-flex.justify-content-start.align-items-start.my-2.text-muted
+          span.me-3
+            i.fas.fa-map-marked-alt
+          span.fw-light
+            | Los pinos, Barranquillak, Calle 22#123b-12, Colombia
+        .d-flex.justify-content-start.align-items-start.my-2.text-muted
+          span.me-3
+            i.fas.fa-envelope
+          span.fw-light
+            | UniConnect.support@gmail.com
+        .d-flex.justify-content-start.align-items-start.my-2.text-muted
+          span.me-3
+            i.fas.fa-phone-alt
+          span.fw-light
+            | +57 3014578934
+      .col-md-6.col-lg-3
+        h5.fw-light.mb-3 Siguenos
+        div
+          ul.list-unstyled.d-flex
+            li
+              a.text-white.text-decoration-none.text-muted.fs-4.me-4(href='https://www.facebook.com/#')
+                i.fab.fa-facebook-f
+            li
+              a.text-white.text-decoration-none.text-muted.fs-4.me-4(href='https://twitter.com/')
+                i.fab.fa-twitter
+            li
+              a.text-white.text-decoration-none.text-muted.fs-4.me-4(href='ttps://www.instagram.com/')
+                i.fab.fa-instagram
+            li
+              a.text-white.text-decoration-none.text-muted.fs-4.me-4(href='https://pinterest.com/')
+                i.fab.fa-pinterest
+// end of footer
+script(src='./src/funciones.js')
+script(src='https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js')
+script(src='bootstrap-5.0.2-dist/js/bootstrap.min.js')

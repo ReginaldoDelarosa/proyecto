@@ -1,0 +1,17 @@
+head
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+.container
+  .row.justify-content-center
+    .col-md-6
+      .card
+        .card-body
+          h1.card-title.text-center Login
+          form
+            .form-group
+              label(for='username') Username
+              input#username.form-control(type='text' placeholder='Enter username' required='')
+            .form-group
+              label(for='password') Password
+              input#password.form-control(type='password' placeholder='Enter password' required='')
+            a(href='index.html')
+              button.btn.btn-primary.btn-block(type='button') Log in
